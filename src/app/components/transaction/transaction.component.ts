@@ -70,9 +70,9 @@ export class TransactionComponent implements OnInit {
     });
   }
 
-  badgeColor(type: string): string {
-    if (type === 'DEBIT') return 'bg-red-50 text-red-500';
-    if (type === 'CREDIT') return 'bg-green-50 text-green-600';
-    return 'bg-gray-100 text-gray-500';
+  txTypeBadge(type: string): string {
+    if (type === 'DEBIT') return 'bg-red-500/15 text-red-400 border border-red-500/20 text-xs font-medium px-2.5 py-1 rounded-full';
+    if (type === 'CREDIT') return 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 text-xs font-medium px-2.5 py-1 rounded-full';
+    return 'bg-slate-700 text-slate-300 text-xs font-medium px-2.5 py-1 rounded-full';
   }
 }

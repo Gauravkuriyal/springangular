@@ -64,4 +64,13 @@ export class BillPaymentComponent implements OnInit {
       error: () => { this.error = 'Failed to delete bill.'; }
     });
   }
+
+  billTypeBadge(type: string): string {
+    const map: Record<string, string> = {
+      ELECTRICITY: 'bg-amber-500/15 text-amber-400 border border-amber-500/20 text-xs font-medium px-2.5 py-1 rounded-full',
+      MOBILE_RECHARGE: 'bg-blue-500/15 text-blue-400 border border-blue-500/20 text-xs font-medium px-2.5 py-1 rounded-full',
+      GAS_BOOKING: 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 text-xs font-medium px-2.5 py-1 rounded-full',
+    };
+    return map[type] ?? 'bg-slate-700 text-slate-300 text-xs font-medium px-2.5 py-1 rounded-full';
+  }
 }

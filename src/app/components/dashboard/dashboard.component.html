@@ -1,0 +1,54 @@
+<div class="max-w-5xl mx-auto px-4 py-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">Dashboard</h2>
+
+  @if (loading) {
+    <p class="text-gray-500">Loading...</p>
+  } @else if (error) {
+    <p class="text-red-500">{{ error }}</p>
+  } @else if (customer) {
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Customer Info Card -->
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h3 class="text-lg font-semibold text-indigo-600 mb-4">Customer Details</h3>
+        <div class="space-y-2 text-sm text-gray-700">
+          <p><span class="font-medium">Name:</span> {{ customer.custName }}</p>
+          <p><span class="font-medium">Email:</span> {{ customer.email }}</p>
+          <p><span class="font-medium">Mobile:</span> {{ customer.mobileNumber }}</p>
+          <p><span class="font-medium">Customer ID:</span> {{ customer.custId }}</p>
+        </div>
+      </div>
+
+      <!-- Wallet Card -->
+      <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow p-6 text-white">
+        <h3 class="text-lg font-semibold mb-2">Wallet Balance</h3>
+        <p class="text-4xl font-bold">₹{{ customer.wallet.balance | number:'1.2-2' }}</p>
+        <p class="text-sm mt-2 opacity-80">Wallet ID: {{ customer.wallet.walletId }}</p>
+        <a routerLink="/wallet" class="inline-block mt-4 bg-white text-indigo-600 text-sm font-semibold px-4 py-1.5 rounded-full hover:bg-indigo-50 transition">
+          View Wallet
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Quick Links -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      <a routerLink="/bank-account" class="bg-white rounded-xl shadow p-4 text-center hover:shadow-md transition">
+        <div class="text-2xl mb-1">🏦</div>
+        <p class="text-sm font-medium text-gray-700">Bank Accounts</p>
+      </a>
+      <a routerLink="/beneficiary" class="bg-white rounded-xl shadow p-4 text-center hover:shadow-md transition">
+        <div class="text-2xl mb-1">👥</div>
+        <p class="text-sm font-medium text-gray-700">Beneficiaries</p>
+      </a>
+      <a routerLink="/bill-payment" class="bg-white rounded-xl shadow p-4 text-center hover:shadow-md transition">
+        <div class="text-2xl mb-1">📄</div>
+        <p class="text-sm font-medium text-gray-700">Bill Payments</p>
+      </a>
+      <a routerLink="/transactions" class="bg-white rounded-xl shadow p-4 text-center hover:shadow-md transition">
+        <div class="text-2xl mb-1">📊</div>
+        <p class="text-sm font-medium text-gray-700">Transactions</p>
+      </a>
+    </div>
+  }
+</div>

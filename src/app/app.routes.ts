@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   // ── Public auth ──────────────────────────────────────────────────────────
@@ -21,6 +23,7 @@ export const routes: Routes = [
   // ── Customer layout ──────────────────────────────────────────────────────
   {
     path: '',
+    canActivate: [authGuard],
     loadComponent: () => import('./components/layout/layout.component').then(m => m.LayoutComponent),
     children: [
       {
@@ -53,6 +56,7 @@ export const routes: Routes = [
   // ── Admin layout ─────────────────────────────────────────────────────────
   {
     path: 'admin',
+    canActivate: [adminGuard],
     loadComponent: () => import('./components/admin/admin-layout/admin-layout.component').then(m => m.AdminLayoutComponent),
     children: [
       {
